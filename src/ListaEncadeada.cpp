@@ -36,6 +36,20 @@ void ListaEncadeada::InsereFinal(int item){
     tamanho++;
 }
 
+void ListaEncadeada::InsereInicio(int item){
+    CelulaLista *nova = new CelulaLista();
+    nova->item = item;
+    nova->next = first;
+    first = nova;
+
+
+    if (last == nullptr){
+        last = nova;
+    }
+
+    tamanho++;
+}
+
 void ListaEncadeada::RemoveInicio(){
 
     if(first==nullptr) return;

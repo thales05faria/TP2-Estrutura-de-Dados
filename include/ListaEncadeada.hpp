@@ -22,6 +22,7 @@ class ListaEncadeada {
         int* GetFirst();
         int GetTamanho() const;
         void InsereFinal(int item);
+        void InsereInicio(int item);
         void RemoveInicio();
         void Limpa();
 
