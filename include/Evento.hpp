@@ -12,13 +12,13 @@ class Evento{
     public:
 
         Evento();
-        Evento(int tempo, Pacote pacote, int armazemChegada); //Construtor tipo CHEGADA_PACOTE
+        Evento(int tempo, Pacote* pacote, int armazemChegada); //Construtor tipo CHEGADA_PACOTE
         Evento(int tempo, int origem, int destino); //Construtor tipo TRANSPORTE_PACOTE
 
         int tempo;
         TipoEvento tipo;
 
-        Pacote pacote; //para CHEGADA
+        Pacote *pacote; //para CHEGADA
         int armazemOrigem; 
         int armazemDestino; 
 
@@ -26,4 +26,4 @@ class Evento{
 };
 
 
-#endif EVENTO_HPP
+#endif 

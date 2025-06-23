@@ -16,14 +16,14 @@ int Pilha::getTamanho() const{
 
 Pacote* Pilha::getTopo() const{
     if (topo == nullptr) return nullptr;
-    return &(topo->item);
+    return topo->item;
 }
 
 void Pilha::Limpa(){
     while(topo != nullptr) Desempilha();
 }
 
-void Pilha::Empilha(const Pacote& item){
+void Pilha::Empilha(Pacote* item){
 
     CelulaPilha *nova = new CelulaPilha();
     nova->item = item;

@@ -7,7 +7,7 @@ class Pilha{
     private: 
 
         struct CelulaPilha{
-            Pacote item; //Armazena um pacote
+            Pacote* item; //Armazena um pacote
             CelulaPilha *next;
         };
 
@@ -19,7 +19,7 @@ class Pilha{
         Pilha();
         ~Pilha();
 
-        void Empilha(const Pacote& item);
+        void Empilha(Pacote* item);
         void Desempilha();
         Pacote* getTopo() const;
         int getTamanho() const;
@@ -27,4 +27,4 @@ class Pilha{
 
 };
 
-#endif PILHA_HPP
+#endif 

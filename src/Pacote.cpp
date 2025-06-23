@@ -25,10 +25,6 @@ Pacote::Pacote(int id, int origem, int destino, int tempoPostagem){
     this->ultimoTempo = tempoPostagem;
 }
 
-Pacote::~Pacote(){
-
-}
-
 int Pacote::getID() const{
     return id;
 }

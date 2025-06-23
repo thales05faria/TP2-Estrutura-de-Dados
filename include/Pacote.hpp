@@ -16,7 +16,6 @@ class Pacote{
     public: 
         Pacote();
         Pacote(int id, int origem, int destino, int tempoPostagem);
-        ~Pacote();
 
         int getID() const;
         int getOrigem() const;
@@ -49,4 +48,4 @@ class Pacote{
 
 };
 
-#endif PACOTE_HPP
+#endif 

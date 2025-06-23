@@ -5,7 +5,7 @@
         }
 
         //Construtor tipo CHEGADA_PACOTE
-        Evento::Evento(int tempo, Pacote pacote, int armazemChegada){
+        Evento::Evento(int tempo, Pacote* pacote, int armazemChegada){
             this->tempo = tempo;
             this->tipo = CHEGADA_PACOTE;
             this->pacote  = pacote;
@@ -19,6 +19,7 @@
             this->tipo = TRANSPORTE_PACOTE;
             this->armazemOrigem = origem;
             this->armazemDestino = destino;
+            this->pacote = nullptr;
         } 
 
         bool Evento::operator>(const Evento& outro) const{
@@ -35,8 +36,8 @@
             //PRIORIDADE 2: ID do Pacote ou Origem-Destino do Transporte
             if (this->tipo == CHEGADA_PACOTE && outro.tipo == CHEGADA_PACOTE) {
 
-                if (this->pacote.getID() > outro.pacote.getID()) return true;
-                if (this->pacote.getID() < outro.pacote.getID()) return false;
+                if (this->pacote->getID() > outro.pacote->getID()) return true;
+                if (this->pacote->getID() < outro.pacote->getID()) return false;
 
             } else if (this->tipo == TRANSPORTE_PACOTE && outro.tipo == TRANSPORTE_PACOTE) {
 
@@ -57,6 +58,6 @@
                 return false;
             }
 
-
+            return false;
 
         }
