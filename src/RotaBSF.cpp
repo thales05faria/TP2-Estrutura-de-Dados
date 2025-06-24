@@ -45,7 +45,7 @@ ListaEncadeada calculaRota(int** grafo, int numArmazens, int origem, int destino
     if(distancia[destino] != -1){
         int armazemRota = destino;
 
-        //Enquanto não chegamos ao início do caminho (antecessor[origem] == -1)
+        //Enquanto não chegamos ao início do caminho 
         while(armazemRota != -1){
             rota.InsereInicio(armazemRota); //Adiciona o armazém a rota
             armazemRota = antecessor[armazemRota]; //Passa para o armazém antecessor

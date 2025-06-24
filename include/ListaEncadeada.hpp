@@ -6,7 +6,7 @@ class ListaEncadeada {
     private:
 
         struct CelulaLista{
-            int item; //Armazena o ID do armazém
+            int item; 
             CelulaLista *next;
         };
 
@@ -19,8 +19,8 @@ class ListaEncadeada {
 
         ListaEncadeada();
         ~ListaEncadeada();
-        ListaEncadeada(const ListaEncadeada& outra); // Construtor de Cópia
-        ListaEncadeada& operator=(const ListaEncadeada& outra); // Operador de Atribuição
+        ListaEncadeada(const ListaEncadeada& outra); 
+        ListaEncadeada& operator=(const ListaEncadeada& outra);
         int* GetFirst();
         int GetTamanho() const;
         void InsereFinal(int item);

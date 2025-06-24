@@ -1,19 +1,19 @@
 #include "MinHeap.hpp"
-#include <stdexcept> // Para std::out_of_range e std::overflow_error
+#include <stdexcept> 
 
-// Construtor
+//Construtor
 MinHeap::MinHeap(int capacidade) {
     this->capacidade = capacidade;
     this->tamanho = 0;
     this->heap = new Evento[capacidade];
 }
 
-// Destrutor
+//Destrutor
 MinHeap::~MinHeap() {
     delete[] heap;
 }
 
-// --- Métodos Auxiliares Privados ---
+//Métodos Auxiliares Privados
 
 void MinHeap::troca(Evento* a, Evento* b) {
     Evento temp = *a;
@@ -32,7 +32,7 @@ void MinHeap::sobe(int i) {
     }
 }
 
-// Implementação ITERATIVA e robusta do 'desce'
+//Implementação do método desce
 void MinHeap::desce(int i) {
     int indiceDoMenor;
     while (true) {
@@ -40,30 +40,28 @@ void MinHeap::desce(int i) {
         int dir = filhoDireito(i);
         indiceDoMenor = i;
 
-        // Acha o menor entre o nó atual (i) e seu filho esquerdo
+        // Acha o menor entre o nó atual i e seu filho esquerdo
         if (esq < tamanho && (heap[indiceDoMenor] > heap[esq])) {
             indiceDoMenor = esq;
         }
 
-        // Compara o menor encontrado até agora com o filho direito
+        //Compara o menor encontrado até agora com o filho direito
         if (dir < tamanho && (heap[indiceDoMenor] > heap[dir])) {
             indiceDoMenor = dir;
         }
 
-        // Se o nó 'i' já é o menor, a propriedade do heap está satisfeita.
+        //Se o nó i já é o menor, a propriedade do heap está satisfeita
         if (indiceDoMenor == i) {
             break;
         }
 
-        // Caso contrário, troca com o menor filho e continua o processo
+        //Caso contrário, troca com o menor filho e continua o processo
         troca(&heap[i], &heap[indiceDoMenor]);
         i = indiceDoMenor;
     }
 }
 
-
-// --- Métodos Públicos ---
-
+//Método para inserir um item e organizar o heap
 void MinHeap::insere(const Evento& evento) {
     if (tamanho == capacidade) {
         throw std::overflow_error("Erro: Heap cheio!");
@@ -73,6 +71,7 @@ void MinHeap::insere(const Evento& evento) {
     sobe(tamanho - 1);
 }
 
+//Remove um item e reorganiza o heap
 Evento MinHeap::remove() {
     if (tamanho <= 0) {
         throw std::out_of_range("Erro: Heap vazio.");
@@ -88,10 +87,12 @@ Evento MinHeap::remove() {
     return raiz;
 }
 
+//Confere se o minheap está vazio ou não
 bool MinHeap::Vazio() const {
     return tamanho == 0;
 }
 
+//Retorna a quantidade de itens do heap
 int MinHeap::getTamanho() const {
     return tamanho;
 }

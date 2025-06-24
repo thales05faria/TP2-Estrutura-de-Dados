@@ -6,7 +6,7 @@ class Fila {
     private:
 
         struct CelulaFila{
-            int item; //Armazena o ID do armazém
+            int item;
             CelulaFila *next;
         };
 

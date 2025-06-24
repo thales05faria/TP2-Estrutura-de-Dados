@@ -21,19 +21,19 @@ Armazem::~Armazem() {
     delete[] secoes;
 }
 
-// Método de inicialização (alternativa ao construtor)
+// Método de inicialização
 void Armazem::inicializar(int id, int numTotalArmazens) {
     this->id = id;
     this->numTotalArmazens = numTotalArmazens;
     if (this->secoes != nullptr) {
-        delete[] secoes; // Garante que não haja vazamento se for chamado de novo
+        delete[] secoes; 
     }
     this->secoes = new Pilha[numTotalArmazens];
 }
 
 // Retorna uma referência para a Pilha correta
 Pilha& Armazem::getSecao(int idArmazemDestino) {
-    // O array 'secoes' tem uma pilha para cada possível destino.
-    // A pilha na posição 'idArmazemDestino' guarda os pacotes que vão para lá.
+    // O array secoes tem uma pilha para cada possível destino
+    // A pilha na posição 'idArmazemDestino' guarda os pacotes que vão para lá
     return secoes[idArmazemDestino];
 }

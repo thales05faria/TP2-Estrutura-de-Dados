@@ -7,7 +7,7 @@ class Pilha{
     private: 
 
         struct CelulaPilha{
-            Pacote* item; //Armazena um pacote
+            Pacote* item; 
             CelulaPilha *next;
         };
 

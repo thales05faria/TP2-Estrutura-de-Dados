@@ -1,13 +1,14 @@
 #ifndef ARMAZEM_HPP
 #define ARMAZEM_HPP
 
-#include "Pilha.hpp" // O Armazém é composto por Pilhas
+#include "Pilha.hpp" 
+// O Armazém é composto por Pilhas
 
 class Armazem {
 private:
-    int id;                // O ID deste armazém
+    int id;                //ID do armazém
     int numTotalArmazens;  // O número total de armazéns na rede
-    Pilha* secoes;         // Ponteiro para um array dinâmico de Pilhas
+    Pilha* secoes;         // Ponteiro para um array de Pilhas
 
 public:
     // Construtor: cria um armazém e inicializa suas seções
@@ -17,10 +18,10 @@ public:
     // Destrutor: libera a memória alocada para as seções
     ~Armazem();
 
-    // Método para inicializar o armazém (se não usar o construtor parametrizado)
+    // Método para inicializar o armazém 
     void inicializar(int id, int numTotalArmazens);
 
-    // Retorna a seção (Pilha) correta para um determinado destino
+    // Retorna a seção correta para um determinado destino
     Pilha& getSecao(int idArmazemDestino);
 };
 

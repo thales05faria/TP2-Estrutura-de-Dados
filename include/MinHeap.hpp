@@ -1,26 +1,25 @@
 #ifndef MINHEAP_HPP
 #define MINHEAP_HPP
 
-#include "Evento.hpp" // O Heap precisa saber o que é um Evento para poder armazená-lo.
-#include <iostream>  // Para mensagens de erro
+#include "Evento.hpp" 
+#include <iostream> 
 
 class MinHeap{
     
 private:
-    Evento* heap;     // Ponteiro para o array que armazenará os eventos.
-    int capacidade;   // A capacidade máxima do heap.
-    int tamanho;      // O número atual de eventos no heap.
+    Evento* heap;     // Ponteiro para o array que armazenará os eventos
+    int capacidade;   // Capacidade máxima do heap
+    int tamanho;      // Número atual de eventos no heap
 
 
-    // Retorna o índice do pai de um nó.
+    // Retorna o índice do pai de um nó
     int pai(int i);
-    // Retorna o índice do filho esquerdo.
+    // Retorna o índice do filho esquerdo
     int filhoEsquerdo(int i);
-    // Retorna o índice do filho direito.
+    // Retorna o índice do filho direito
     int filhoDireito(int i);
 
     // Sobe um elemento no heap
-    // Usado após a inserção.
     void sobe(int i);
 
     // Desce um elemento no heap
@@ -40,7 +39,7 @@ public:
     // Insere um novo evento
     void insere(const Evento& evento);
 
-    // Remove e retorna o evento de maior prioridade (o menor evento)
+    // Remove e retorna o evento de maior prioridade
     Evento remove();
 
     // Retorna true se o heap estiver vazio
