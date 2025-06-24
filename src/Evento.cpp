@@ -20,44 +20,33 @@
             this->armazemOrigem = origem;
             this->armazemDestino = destino;
             this->pacote = nullptr;
-        } 
+        }
+     
+        std::string Evento::gerarChavePrioridade() const {
+            std::stringstream chave;
+            
+            // Formata com 0 à esquerda e largura fixa para cada campo
+            chave << std::setw(6) << std::setfill('0') << this->tempo;
 
-        bool Evento::operator>(const Evento& outro) const{
-
-            //PRIORIDADE 1: TEMPO
-            if(this->tempo > outro.tempo) {
-                return true;
+            if (this->tipo == CHEGADA_PACOTE) {
+                // Formato para evento de Pacote, conforme Tabela 1
+                chave << std::setw(6) << std::setfill('0') << this->pacote->getID();
+                chave << std::setw(1) << std::setfill('0') << this->tipo;
+            } else { 
+                // Formato para evento de Transporte, conforme Tabela 1
+                chave << std::setw(3) << std::setfill('0') << this->armazemOrigem;
+                chave << std::setw(3) << std::setfill('0') << this->armazemDestino;
+                chave << std::setw(1) << std::setfill('0') << this->tipo;
             }
+            
+            return chave.str();
+        }
 
-            if(this->tempo < outro.tempo){
-                return false;
-            }
+        bool Evento::operator>(const Evento& outro) const {
+            // Gera as chaves para ambos os eventos
+            std::string chaveThis = this->gerarChavePrioridade();
+            std::string chaveOutro = outro.gerarChavePrioridade();
 
-            //PRIORIDADE 2: ID do Pacote ou Origem-Destino do Transporte
-            if (this->tipo == CHEGADA_PACOTE && outro.tipo == CHEGADA_PACOTE) {
-
-                if (this->pacote->getID() > outro.pacote->getID()) return true;
-                if (this->pacote->getID() < outro.pacote->getID()) return false;
-
-            } else if (this->tipo == TRANSPORTE_PACOTE && outro.tipo == TRANSPORTE_PACOTE) {
-
-                if (this->armazemOrigem > outro.armazemOrigem) return true;
-                if (this->armazemOrigem < outro.armazemOrigem) return false;
-                
-                if (this->armazemDestino > outro.armazemDestino) return true;
-                if (this->armazemDestino < outro.armazemDestino) return false;
-
-            }
-
-            //PRIORIDADE 3: TIPO DO EVENTO
-            if (this->tipo > outro.tipo) {
-                return true;
-            }
-
-            if (this->tipo < outro.tipo) {
-                return false;
-            }
-
-            return false;
-
+            // Compara as strings
+            return chaveThis > chaveOutro;
         }

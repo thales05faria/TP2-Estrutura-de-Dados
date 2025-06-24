@@ -1,6 +1,9 @@
 #ifndef EVENTO_HPP
 #define EVENTO_HPP
 #include "Pacote.hpp"
+#include <string> 
+#include <sstream> 
+#include <iomanip>
 
 enum TipoEvento{
     CHEGADA_PACOTE,
@@ -18,11 +21,15 @@ class Evento{
         int tempo;
         TipoEvento tipo;
 
-        Pacote *pacote; //para CHEGADA
+        Pacote *pacote; 
         int armazemOrigem; 
         int armazemDestino; 
 
         bool operator>(const Evento& outro) const;
+
+    private:
+
+        std::string gerarChavePrioridade() const;
 };
 
 
