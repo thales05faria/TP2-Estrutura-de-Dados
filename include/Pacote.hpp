@@ -31,6 +31,7 @@ class Pacote{
 
         int getTempoArmazenado() const;
         int getTempoEmTransporte() const;
+        int getTempoPostagem() const;
 
     private:
         int id;
